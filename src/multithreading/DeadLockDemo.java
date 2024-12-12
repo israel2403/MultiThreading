@@ -15,10 +15,10 @@ public class DeadLockDemo {
         });
 
         Thread t2 = new Thread(() -> {
-            synchronized (R2) {
-                System.out.println("Thread t2 looked at resource: " + R2);
-                synchronized (R1) {
-                    System.out.println("Thread t2 looked at resource: " + R1);
+            synchronized (R1) {
+                System.out.println("Thread t2 looked at resource: " + R1);
+                synchronized (R2) {
+                    System.out.println("Thread t2 looked at resource: " + R2);
                 }
             }
         });
