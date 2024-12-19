@@ -15,7 +15,7 @@ public class VirtualThreadDemo {
         };
 
         for (int i = 0; i < 500000; i++) {
-            Thread.startVirtualThread(runnable).join();
+            Thread.ofVirtual().start(runnable).join();
         }
         long end = System.currentTimeMillis();
         System.out.println("Time taken by virtual thread is: " + (end - start));
