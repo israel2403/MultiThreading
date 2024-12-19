@@ -2,8 +2,9 @@ package multithreading;
 
 import java.util.Random;
 
-
 // with normal thread it will take 82828 ms
+// with virtual thread it will take 24662 ms
+// 82828 - 24662 = 58166 ms of difference
 public class VirtualThreadDemo {
     public static void main(String[] args) throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -14,9 +15,7 @@ public class VirtualThreadDemo {
         };
 
         for (int i = 0; i < 500000; i++) {
-            Thread t = new Thread(runnable);
-            t.start();
-            t.join();
+            Thread.startVirtualThread(runnable).join();
         }
         long end = System.currentTimeMillis();
         System.out.println("Time taken by virtual thread is: " + (end - start));
